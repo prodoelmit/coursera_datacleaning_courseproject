@@ -40,3 +40,5 @@ m <- sapply(fulldata.filtered, mean)
 meandata <- data.table(feature = names(m), mean.value = m)
 head(meandata)
 
+write.table(meandata, file="meandata.txt", row.names=F)
+
