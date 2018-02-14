@@ -45,7 +45,8 @@ names(fulldata.filtered) <- ns
 persons <- as_tibble(rbind(
 				 read.table("./data/UCI HAR Dataset/train/subject_train.txt"),
 				 read.table("./data/UCI HAR Dataset/test/subject_test.txt")
-				 ))
+				 )) 
+# SHOULD JOIN PERSONS 
 activity.labels <- fulllabels %>% 
 	inner_join( as_tibble(read.table("./data/UCI HAR Dataset/activity_labels.txt", col.names=c("activity.label.id", "activity.label"))))
 
@@ -56,4 +57,4 @@ data <- as_tibble(fulldata.filtered) %>%
 names(data)[1] <- "activity.label"
 names(data)[2] <- "person.id"
 
-write.table(data, "meandata.txt")
+write.table(data, "meandata.txt", row.name=F)
