@@ -29,16 +29,17 @@ ns <- gsub("([A-Z])", ".\\1", ns)
 ns <- gsub("^\\.", "", ns)
 ns <- tolower(ns)
 ns <- gsub("body\\.body", "body", ns)
+ns <- gsub("mag", "magnitude", ns)
 ns <- gsub("acc", "acceleration", ns)
 ns <- gsub("gyro", "angularvelocity", ns)
 
 names(fulldata.filtered) <- ns
-head(fulldata.filtered)
+#head(fulldata.filtered)
 
 # Providing average of each variable
 m <- sapply(fulldata.filtered, mean)
 meandata <- data.table(feature = names(m), mean.value = m)
-head(meandata)
 
 write.table(meandata, file="meandata.txt", row.names=F)
+meandata
 
